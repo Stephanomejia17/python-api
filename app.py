@@ -34,6 +34,11 @@ def post_days():
 def hello_world():
     return "Hello, World!"
 
+@app.route("/newday", methods=["POST"])
+def new_day():
+    new_day = {"id": (days[-1]["id"])+1, "name": "Newday"}
+    days.append(new_day)
+    return jsonify(new_day), 201
 
 if __name__ == "__main__":
     app.run(debug=True)
